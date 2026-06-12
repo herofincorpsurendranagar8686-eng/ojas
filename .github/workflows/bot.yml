@@ -25,6 +25,25 @@ jobs:
       - name: Install Packages
         run: npm install
 
+      - name: Debug Secrets
+        env:
+          BOT_TOKEN: ${{ secrets.BOT_TOKEN }}
+          CHANNEL_USERNAME: ${{ secrets.CHANNEL_USERNAME }}
+        run: |
+          echo "===== SECRET TEST ====="
+
+          if [ -n "$BOT_TOKEN" ]; then
+            echo "BOT_TOKEN: FOUND"
+          else
+            echo "BOT_TOKEN: MISSING"
+          fi
+
+          echo "CHANNEL_USERNAME: $CHANNEL_USERNAME"
+
+          echo "===== BOT TEST ====="
+
+          curl "https://api.telegram.org/bot${BOT_TOKEN}/getMe"
+
       - name: Run Bot
         env:
           BOT_TOKEN: ${{ secrets.BOT_TOKEN }}
