@@ -6,7 +6,7 @@ import { sendTelegram } from "./telegram.js";
 dotenv.config();
 
 const URL =
-  "https://ojas.gujarat.gov.in/AdvtList.aspx?type=lCxUjNjnTp8=";
+  "https://www.ojasgujarat.net/ojas-bharti/";
 
 function loadOldJobs() {
   try {
