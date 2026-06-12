@@ -1,7 +1,4 @@
 import axios from "axios";
-import dotenv from "dotenv";
-
-dotenv.config();
 
 export async function sendTelegram(message) {
   try {
@@ -10,12 +7,12 @@ export async function sendTelegram(message) {
       {
         chat_id: process.env.CHANNEL_USERNAME,
         text: message,
-        parse_mode: "HTML"
+        disable_web_page_preview: false
       }
     );
 
-    console.log("Telegram message sent");
+    console.log("Telegram sent");
   } catch (err) {
-    console.error("Telegram Error:", err.message);
+    console.error("Telegram error:", err.message);
   }
 }
